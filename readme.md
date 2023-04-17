@@ -1,9 +1,4 @@
-<style>
-body {
-  background-color: #00FFFF;
-}
-</style>
-
+<table><tr><td bgcolor=orange> 
 # 系級班級
 
 資工1A B1204071 楊浩辰
@@ -17,3 +12,4 @@ body {
 
 - 組長：楊浩辰
 - 組員：劉仁毓
+</td></tr></table>
