@@ -1,8 +1,3 @@
-<style>
-body {
-  background-color: #00FFFF;
-}
-</style>
 
 # 系級班級
 
