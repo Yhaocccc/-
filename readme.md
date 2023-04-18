@@ -44,3 +44,6 @@ theme : uncover
 
 ---
 ## 分工資訊
+
+UML、PPT製作：劉仁毓
+程式、PPT製作：楊浩辰
