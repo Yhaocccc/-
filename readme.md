@@ -1,8 +1,4 @@
----
-marp: true
-theme : uncover
 
----
 
 # 系級班級
 
