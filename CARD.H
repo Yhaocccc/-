@@ -26,12 +26,13 @@ public:
         KING     // K
     };
     
-    
     Card();
-    Suit getSuit();
-    Rank getRank();
+    Suit getSuit();//取得花色
+    Rank getRank();//取得點數
+    void display();//顯示牌面
+       
 private:
-    Suit suit_;
-    Rank rank_;
+    Suit suit;
+    Rank rank;
 };
 #endif
