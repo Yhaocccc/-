@@ -38,7 +38,7 @@ int main() {
         else {
             poker[i] = (i + 1) % 13; //剩餘數字照常輸入
         }
-    }
+    } //輸入點數於陣列中
 /*
     for (int i = 0; i < 52; i++) {
         cout << poker[i] << " ";
