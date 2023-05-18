@@ -3,7 +3,8 @@
 #include "Card.h"
 using namespace std;
 
-int Deck::current_figures = 0;
+int Deck::current_figures = 0; 
+//紀錄當前發到第幾張牌
 
 Deck::Deck() {
     player = player_HandCards;
@@ -53,57 +54,55 @@ void Deck::Shuffle(int r) {
 //洗牌
 
 void Deck::distributeForPlayer(int paraPlayer) {
-    player[paraPlayer].push_back(poker[current_figures]);
+    player[paraPlayer] = poker[current_figures];
     current_figures++;
 }
 //分配卡牌給玩家
 
 void Deck::distributeForDealer(int paraDealer) {
-    player[paraDealer].push_back(poker[current_figures]);
+    player[paraDealer] = poker[current_figures];
     current_figures++;
 }
 //分配卡牌給電腦
 
+/*
 void Deck::printCard(int parameter) {
     poker[parameter].print();
 }
 //會傳入一個 int 的參數，使用 cards[int] 去呼叫 class Card的print()做輸出
+*/
 
 Card* Deck::getPlayer() const {
 
     return player;
 }
-//回傳 player1
+//回傳 玩家的花色跟牌值
 
 Card* Deck::getDealer() const {
 
     return dealer;
 }
-//回傳 player2
+//回傳 莊家的花色跟牌值
 
-void Deck::show(Card* player) {
-    for (int i = 0; i < 3; i++) {
-        player[i].print();
+void Deck::showOriginal(Card* person) {
+    for (int i = 0; i < 2; i++) {
+        person[i].print();
     }
 }
-//會傳入一個 Card* 的參數，印出該參數的前3張牌，輸出格式見輸出範例
+//會傳入一個 Card* 的參數，印出手上的兩張牌
 
-void Deck::compare() {
-    for (int i = 0; i < 3; i++) {
-        if (player[i].getSymbol() > dealer[i].getSymbol())
-            cout << "Game" << i << ":" << endl << "player1 win" << endl;
-        else if (player[i].getSymbol() < dealer[i].getSymbol())
-            cout << "Game" << i << ":" << endl << "player2 win" << endl;
-        else if (player[i].getSymbol() == dealer[i].getSymbol())
-            if (player[i].getSuit() > dealer[i].getSuit())
-                cout << "Game" << i << ":" << endl << "player1 win" << endl;
-            else if (player[i].getSuit() < dealer[i].getSuit())
-                cout << "Game" << i << ":" << endl << "player2 win" << endl;
+void Deck::showLater(Card* person ,int a) {
+    for (int i = 0; i < a; i++) {
+        person[i].print();
     }
 }
-//比較誰大，總共會比較3回合的player1卡大還是player2卡比較大。
-//這裡的規則像是大老二先比牌的大小在比花色，梅花<方塊<愛心<黑桃，A比K大，2為最大
-//(第一張和第一張比，第二張就和第二張比，第三張如前述)，得知誰大了之後做輸出，輸出格式見輸出範例
+//顯示手上所有的牌，int一個整數，是用來判斷總共要顯示幾張牌
+
+
+void Deck::finalCompare() {
+    
+}
+//最後用來比較莊家跟玩家的手牌大小
 
 void Deck::swapByReference(Card& c1, Card& c2) {
     Card tempCard = c2;
@@ -118,3 +117,20 @@ void Deck::swapByPointer(Card* c1, Card* c2) {
     *c1 = tempCard;
 }
 //用指標的方式將參數兩個物件做交換
+
+
+
+
+/*
+for (int i = 0; i < 3; i++) {
+        if (player[i].getSymbol() > dealer[i].getSymbol())
+            cout << "Game" << i << ":" << endl << "player1 win" << endl;
+        else if (player[i].getSymbol() < dealer[i].getSymbol())
+            cout << "Game" << i << ":" << endl << "player2 win" << endl;
+        else if (player[i].getSymbol() == dealer[i].getSymbol())
+            if (player[i].getSuit() > dealer[i].getSuit())
+                cout << "Game" << i << ":" << endl << "player1 win" << endl;
+            else if (player[i].getSuit() < dealer[i].getSuit())
+                cout << "Game" << i << ":" << endl << "player2 win" << endl;
+    }
+*/
