@@ -10,9 +10,9 @@ public:
     Card(double);
     void setCard(double); //將值存入 card
     double getCard() const; //回傳 card
-    string getSuit() const; //回傳花色（型別為字串，請使用 vector St)
-    string getRank() const; //回傳大小（型別為字串，請使用 vector Sl)
-    void print(); //使用 getSuit() 及 getSymbol() 印出資料
+    string getSuit() const; //回傳花色
+    string getRank() const; //回傳大小
+    void print(); //使用 getSuit() 及 getRank() 印出資料
 
 private:
     vector<string> Suit = { "Club", "Diamond", "Heart", "Spade" };
