@@ -27,14 +27,14 @@ double Card::getCard() const {
 string Card::getSuit() const {
 	return Suit[suit - 1];
 }
-//回傳花色（型別為字串，請使用 vector St)
+//回傳花色
 
 string Card::getRank() const {
 	return Rank[rank - 1];
 }
-//回傳大小（型別為字串，請使用 vector Sl)
+//回傳大小
 
 void Card::print() {
-	
+	cout << getSuit() << " " << getRank();
 }
-//使用 getSuit() 及 getSymbol() 印出資料
+//使用 getSuit() 及 getRank() 印出資料
