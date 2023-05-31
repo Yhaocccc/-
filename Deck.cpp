@@ -148,7 +148,7 @@ int Deck::calculateHandValue(Card* hand, int hand_count) {
     int total = 0;
     for(int i=0; i<hand_count; ++i) {
         // 其中getCardValue()是用來取得每張牌點數的方法
-        total += hand[i].getCardValue();
+        total += hand[i].getCard();
     }
     return total;
 }
