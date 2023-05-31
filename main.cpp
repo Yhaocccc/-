@@ -1,13 +1,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
-void Screen::gameTitle() {
-  cout << " ******************** " << endl;
-  cout << " * 二十一點卡牌遊戲 * " << endl;
-  cout << " ******************** " << endl ;
-  }
 int main() {
-     
+     cout << " * 二十一點卡牌遊戲 * " << endl;
+  cout << " ******************** " << endl ;
    for (int i = 0; i < 52; i++) {
         cout << "Enter the value for poker card " << i << ": ";
         cin >> poker[i];
