@@ -106,8 +106,8 @@ void Deck::showLater(Card* person ,int a) {
 void Deck::finalCompare() {
     void finalCompare() {
     // 計算玩家和莊家手中牌的總值
-    int playerValue = calculateHandValue(player, current_figures); // current_figures 是手牌數量
-    int dealerValue = calculateHandValue(dealer, current_figures);
+    int playerValue = calculateHandValue(player,player_hand_count); // 玩家手牌數量
+    int dealerValue = calculateHandValue(dealer,dealer_hand_count);//莊家手牌數量
 
     // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
     if (playerValue > 21) {
