@@ -56,12 +56,16 @@ void Deck::Shuffle(int r) {
 void Deck::distributeForPlayer(int paraPlayer) {
     player[paraPlayer] = poker[current_figures];
     current_figures++;
+    player_hand_count++;
+     // 每次分發牌給玩家，就增加玩家的手牌數量
 }
 //分配卡牌給玩家
 
 void Deck::distributeForDealer(int paraDealer) {
     player[paraDealer] = poker[current_figures];
     current_figures++;
+    dealer_hand_count++;
+    // 每次分發牌給莊家，就增加莊家的手牌數量
 }
 //分配卡牌給電腦
 
