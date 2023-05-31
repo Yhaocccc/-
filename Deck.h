@@ -19,6 +19,7 @@ public:
     void showOriginal(Card*); //會傳入一個 Card* 的參數，印出手上的兩張牌
     void showLater(Card*, int); //顯示手上所有的牌，int一個整數，是用來判斷總共要顯示幾張牌
     void finalCompare(); //最後用來比較莊家跟玩家的手牌大小
+     int calculateHandValue(Card* hand, int hand_count); //計算手牌值
     
     static int current_figures; //紀錄當前發到第幾張牌
     void swapByReference(Card&, Card&); //用參照的方式將參數兩個物件做交換
