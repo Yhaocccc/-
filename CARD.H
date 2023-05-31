@@ -26,7 +26,7 @@ public:
         KING     // K
     };
     
-    Card();
+    Card(Rank rank, Suit suit);
     Suit getSuit();//取得花色
     Rank getRank();//取得點數
     void display();//顯示牌面
