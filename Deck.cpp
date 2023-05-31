@@ -100,6 +100,33 @@ void Deck::showLater(Card* person ,int a) {
 
 
 void Deck::finalCompare() {
+    void finalCompare() {
+    // 計算玩家和莊家手中牌的總值
+    int playerValue = calculateHandValue(player, current_figures); // current_figures 是手牌數量
+    int dealerValue = calculateHandValue(dealer, current_figures);
+
+    // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
+    if (playerValue > 21) {
+        cout << "玩家爆牌，莊家贏！" << endl;
+    } 
+    // 如果莊家手中牌的總值超過21，表示莊家爆牌，玩家贏
+    else if (dealerValue > 21) {
+        cout << "莊家爆牌，玩家贏！" << endl;
+    } 
+    // 如果玩家手中牌的總值大於莊家，玩家贏
+    else if (playerValue > dealerValue) {
+        cout << "玩家贏！" << endl;
+    } 
+    // 如果莊家手中牌的總值大於玩家，莊家贏
+    else if (dealerValue > playerValue) {
+        cout << "莊家贏！" << endl;
+    } 
+    // 如果玩家和莊家手中牌的總值相等，表示平手
+    else {
+        cout << "平手！" << endl;
+    }
+}
+
     
 }
 //最後用來比較莊家跟玩家的手牌大小
