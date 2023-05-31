@@ -108,7 +108,20 @@ void Deck::finalCompare() {
     // 計算玩家和莊家手中牌的總值
     int playerValue = calculateHandValue(player,player_hand_count); // 玩家手牌數量
     int dealerValue = calculateHandValue(dealer,dealer_hand_count);//莊家手牌數量
-
+   while (playerValue > 5 && playerValue < 21){//點數介於5到21，給玩家選擇是否加牌
+    cout<<"是否要加牌(YES or NO)"<<endl;
+    string answer;
+    cin >> answer;
+   if (answer == 'YES'){
+    distributeForPlayer(paraPlayer);// 分發一張牌給玩家
+   }
+   else if (answer == 'NO' ){
+       break;// 跳出迴圈，結束加牌
+   }
+   else{
+    cout << "請輸入YES或NO。" << endl;
+   }
+  }
     // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
     if (playerValue > 21) {
         cout << "玩家爆牌，莊家贏！" << endl;
