@@ -112,10 +112,10 @@ void Deck::finalCompare() {
     cout<<"是否要加牌(YES or NO)"<<endl;
     string answer;
     cin >> answer;
-   if (answer == "Yes"){
+   if (answer == "Yes" || answer == "yes"){
     distributeForPlayer(paraPlayer);// 分發一張牌給玩家
    }
-   else if (answer == "No" ){
+   else if (answer == "No" || answer == "no"){
        break;// 跳出迴圈，結束加牌
    }
    else{
