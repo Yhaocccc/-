@@ -142,6 +142,10 @@ void Deck::finalCompare() {
     else {
         cout << "平手！" << endl;
     }
+    if (player_hand_count >= 5) {
+            cout << "恭喜你過五關！" << endl;
+            break;
+    }
 }
 
 int Deck::calculateHandValue(Card* hand, int hand_count) {
