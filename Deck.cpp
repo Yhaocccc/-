@@ -62,7 +62,7 @@ void Deck::distributeForPlayer(int paraPlayer) {
 //分配卡牌給玩家
 
 void Deck::distributeForDealer(int paraDealer) {
-    player[paraDealer] = poker[current_figures];
+    dealer[paraDealer] = poker[current_figures];
     current_figures++;
     dealer_hand_count++;
     // 每次分發牌給莊家，就增加莊家的手牌數量
