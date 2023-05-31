@@ -31,5 +31,7 @@ private:
     Card* player; //用來存放玩家手牌的指標
     Card* dealer; //用來存放莊家手牌的指標
     Card* poker; //用來存放所有卡牌的指標
+    int player_hand_count = 0;
+    int dealer_hand_count = 0;
 };
 #endif // !1
