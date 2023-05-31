@@ -119,7 +119,7 @@ void Deck::finalCompare() {
        break;// 跳出迴圈，結束加牌
    }
    else{
-    cout << "請輸入YES或NO。" << endl;
+    cout << "請輸入YES或NO" << endl;
    }
   }
     // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
