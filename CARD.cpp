@@ -1,5 +1,7 @@
 #include "Card.h"
 #include <iostream>
+#include<string>
+using namespace std;
 Card::Card(Rank rank, Suit suit) : rank(rank), suit(suit) {}
 // 取得卡牌的花色
 Card::Suit Card::getSuit() {
