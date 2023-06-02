@@ -33,14 +33,13 @@ void Deck::sortCard() {
         for (int j = i + 1; j < 52; j++) {
             if (poker[j].getCard() < poker[min].getCard())
                 min = j;
-            for (int m = 0; m < min; m++) {
-                if (poker[m].getCard() > poker[min].getCard()) {
-                    swapByPointer(&poker[m], &poker[min]);
-                }
-            }
+        }
+        if (min != i) {
+            swapByPointer(&poker[i], &poker[min]);
         }
     }
 }
+
 //由小到大排列所有的牌（提示：用 card 的小數去判斷），並且交換卡牌位置使用 swapByPointer()
 
 void Deck::Shuffle(int r) {
