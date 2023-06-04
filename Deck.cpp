@@ -125,7 +125,7 @@ void Deck::finalCompare() {
     cout << "莊家的點數總合為: " << dealerValue << endl;
   }
 
-  bool gameFinished = false; // 添加一个标志变量用于控制游戏结束
+  bool gameFinished = false; // 添加一個標誌變量用於控制遊戲结束
   while (!gameFinished) {
     // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
     if (playerValue > 21) {
