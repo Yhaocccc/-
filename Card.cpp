@@ -40,5 +40,5 @@ void Card::print() {
 //使用 getSuit() 及 getRank() 印出資料
 
 string Card::getSymbol() const {
-	return Rank[rank];
+	return Rank[rank-1];
 }
