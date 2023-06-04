@@ -3,6 +3,24 @@
 #include"Card.h"
 #include"Deck.h"
 using namespace std;
+bool playAgain() {
+    bool playAgain = false;
+    string choice;
+    cout << "是否重新開始遊戲(YES or NO)";
+    cin >> choice;
+    
+   if ( choice== "Yes"){
+    playAgain=true;
+}
+else if ( choice== "No"){
+    playAgain=false;
+}
+else{
+    cout<<"請輸入YES或NO"<<endl;
+    return 0;
+}
+}
+
 int main() {
      cout << " * 二十一點卡牌遊戲 * " << endl;
   cout << " ******************** " << endl ;
@@ -81,6 +99,7 @@ int main() {
      deck.finalCompare();
      //詢問玩家是否要加牌，並決定遊戲勝負
 
+playAgain();//詢問是否重新開始遊戲
 
 
 }
