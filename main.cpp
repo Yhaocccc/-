@@ -3,29 +3,30 @@
 #include"Card.h"
 #include"Deck.h"
 using namespace std;
-bool playAgain() {
-    bool playAgain = false;
-    string choice;
-    cout << "是否重新開始遊戲(YES or NO)";
-    cin >> choice;
+    bool playAgain() {
+        bool playAgain = false;
+        string choice;
+         do{
+            cout << "是否重新開始遊戲(YES or NO)";
+            cin >> choice;
     
-   if ( choice== "Yes"){
-    playAgain=true;
-}
-else if ( choice== "No"){
-    playAgain=false;
-}
-else{
-    cout<<"請輸入YES或NO"<<endl;
-    return 0;
-}
-}
+            if ( choice== "Yes"|| choice == "yes"||choice == "YES"){
+                 playAgain=true;
+            }
+            else if ( choice== "No"||choice == "NO"|| choice == "no"){
+                playAgain=false;
+            }
+            else{
+                cout<<"請輸入YES或NO"<<endl;
+            }
+          } while (true);
+   }
 
 int main() {
     
-    
-     cout << " * 二十一點卡牌遊戲 * " << endl;
-  cout << " ******************** " << endl ;
+ do {   
+   cout << " * 二十一點卡牌遊戲 * " << endl;
+   cout << " ******************** " << endl ;
    for (int i = 0; i < 52; i++) {
         cout << "Enter the value for poker card " << i << ": ";
         cin >> poker[i];
@@ -100,7 +101,7 @@ int main() {
      deck.finalCompare();
      //詢問玩家是否要加牌，並決定遊戲勝負
 
-playAgain();//詢問是否重新開始遊戲
+   } while (playAgain());  //詢問是否重新開始遊戲
 
-
+     return 0;
 }
