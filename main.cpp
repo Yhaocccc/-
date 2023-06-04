@@ -11,10 +11,10 @@ using namespace std;
             cin >> choice;
     
             if ( choice== "Yes"|| choice == "yes"||choice == "YES"){
-                 playAgain=true;
+                  return true;
             }
             else if ( choice== "No"||choice == "NO"|| choice == "no"){
-                playAgain=false;
+                 return false;
             }
             else{
                 cout<<"請輸入YES或NO"<<endl;
@@ -23,7 +23,8 @@ using namespace std;
    }
 
 int main() {
-    
+     int poker[52]; //實際上玩家手上撲克牌的點數陣列
+        string pokerOnScreen[52];
  do {   
    cout << " * 二十一點卡牌遊戲 * " << endl;
    cout << " ******************** " << endl ;
@@ -62,7 +63,7 @@ int main() {
         }
     }// 將A~K輸入進陣列當中 共四次
 
-    int poker[52]; //實際上玩家手上撲克牌的點數陣列
+   
 
 
     for (int i = 0; i < 52; i++) {
