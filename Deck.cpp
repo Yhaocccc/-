@@ -150,10 +150,16 @@ void Deck::finalCompare() {
 int Deck::calculateHandValue(Card* hand, int hand_count) {
     int total = 0;
     for(int i=0; i<hand_count; ++i) {
-        total += hand[i].getCard();
+        if(hand[i].getRank() == "A") {
+            total += 1;
+        }
+        else {
+            total += hand[i].getCard();
+        }
     }
     return total;
 }
+
 
     
 }
