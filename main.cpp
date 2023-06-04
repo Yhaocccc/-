@@ -23,6 +23,7 @@ using namespace std;
    }
 
 int main() {
+    string  pokerOnScreen[52];
      int poker[52]; //實際上玩家手上撲克牌的點數陣列
         string pokerOnScreen[52];
  do {   
