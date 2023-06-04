@@ -65,7 +65,7 @@ Deck deck;
 // 建立牌組
    
 deck.createADeck();
-deck.Shuffle(10);
+deck.Shuffle();
 // 創建一副牌並洗牌
   
 deck.distributeForPlayer(2);
