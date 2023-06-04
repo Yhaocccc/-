@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include"Card.h"
+#include"Deck.h"
 using namespace std;
 int main() {
      cout << " * 二十一點卡牌遊戲 * " << endl;
@@ -72,16 +73,14 @@ deck.distributeForDealer(2);
 // 發兩張牌給玩家和莊家
 
     
- cout << "Player's cards: " << endl;
+ cout << "玩家的牌: " << endl;
  deck.showOriginal(deck.getPlayer());
- cout << "Dealer's cards: " << endl;
+ cout << "莊家的牌: " << endl;
  deck.showOriginal(deck.getDealer());
 // 顯示玩家和莊家的初始手牌
 
-
-
-
-
+deck.finalCompare();
+//詢問玩家是否要加牌，並決定遊戲勝負
 
 
 
