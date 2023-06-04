@@ -121,6 +121,8 @@ void Deck::finalCompare() {
    else{
     cout << "請輸入YES或NO" << endl;
    }
+   cout << "玩家的點數總合為: " << playerValue << endl;
+    cout << "莊家的點數總合為: " << dealerValue << endl;
   }
     // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
     if (playerValue > 21) {
