@@ -124,29 +124,37 @@ void Deck::finalCompare() {
    cout << "玩家的點數總合為: " << playerValue << endl;
     cout << "莊家的點數總合為: " << dealerValue << endl;
   }
+
+  bool gameFinished = false; // 添加一个标志变量用于控制游戏结束
+  while (!gameFinished) {
     // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
     if (playerValue > 21) {
         cout << "玩家爆牌，莊家贏！" << endl;
+        gameFinished = true; //結束遊戲循環
     } 
     // 如果莊家手中牌的總值超過21，表示莊家爆牌，玩家贏
     else if (dealerValue > 21) {
         cout << "莊家爆牌，玩家贏！" << endl;
+        gameFinished = true; 
     } 
     // 如果玩家手中牌的總值大於莊家，玩家贏
     else if (playerValue > dealerValue) {
         cout << "玩家贏！" << endl;
+        gameFinished = true; 
     } 
     // 如果莊家手中牌的總值大於玩家，莊家贏
     else if (dealerValue > playerValue) {
         cout << "莊家贏！" << endl;
+        gameFinished = true; 
     } 
     // 如果玩家和莊家手中牌的總值相等，表示平手
     else {
         cout << "平手！" << endl;
+        gameFinished = true; 
     }
     if (player_hand_count >= 5) {
             cout << "恭喜你過五關！" << endl;
-            break;
+            gameFinished = true;
     }
 }
 
