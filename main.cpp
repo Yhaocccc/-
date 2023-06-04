@@ -15,8 +15,7 @@ int main() {
         int suit = static_cast<int>((poker[i] - rank) * 10); // 取得小數部分(花色)
         cout << "Poker card " << i << " has value: " << rank << "." << suit << endl;
     }
-    return 0;
-}
+
     int pokerOnScreenCin = 49; // 用於使用ASCII碼的變數
     string pokerOnScreen[52]; // 顯示於螢幕的撲克牌陣列
 
@@ -61,26 +60,26 @@ int main() {
     }
 */
 
-Deck deck;
-// 建立牌組
+     Deck deck;
+     // 建立牌組
    
-deck.createADeck();
-deck.Shuffle();
-// 創建一副牌並洗牌
+     deck.createADeck();
+     deck.Shuffle();
+     // 創建一副牌並洗牌
   
-deck.distributeForPlayer(2);
-deck.distributeForDealer(2);
-// 發兩張牌給玩家和莊家
+     deck.distributeForPlayer(2);
+     deck.distributeForDealer(2);
+     // 發兩張牌給玩家和莊家
 
     
- cout << "玩家的牌: " << endl;
- deck.showOriginal(deck.getPlayer());
- cout << "莊家的牌: " << endl;
- deck.showOriginal(deck.getDealer());
-// 顯示玩家和莊家的初始手牌
+     cout << "玩家的牌: " << endl;
+     deck.showOriginal(deck.getPlayer());
+     cout << "莊家的牌: " << endl;
+     deck.showOriginal(deck.getDealer());
+     // 顯示玩家和莊家的初始手牌
 
-deck.finalCompare();
-//詢問玩家是否要加牌，並決定遊戲勝負
+     deck.finalCompare();
+     //詢問玩家是否要加牌，並決定遊戲勝負
 
 
 
