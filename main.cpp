@@ -59,4 +59,30 @@ int main() {
         cout << poker[i] << " ";
     }
 */
+
+Deck deck;
+// 建立牌組
+   
+deck.createADeck();
+deck.Shuffle(10);
+// 創建一副牌並洗牌
+  
+deck.distributeForPlayer(2);
+deck.distributeForDealer(2);
+// 發兩張牌給玩家和莊家
+
+    
+ cout << "Player's cards: " << endl;
+ deck.showOriginal(deck.getPlayer());
+ cout << "Dealer's cards: " << endl;
+ deck.showOriginal(deck.getDealer());
+// 顯示玩家和莊家的初始手牌
+
+
+
+
+
+
+
+
 }
