@@ -6,7 +6,7 @@ using namespace std;
     bool playAgain() {
         bool playAgain = false;
         string choice;
-         do{
+         while(true){
             cout << "是否重新開始遊戲(YES or NO)";
             cin >> choice;
     
@@ -19,7 +19,7 @@ using namespace std;
             else{
                 cout<<"請輸入YES或NO"<<endl;
             }
-          } while (true);
+        } 
    }
 
 int main() {
