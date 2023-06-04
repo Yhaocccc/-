@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Deck.h"
 #include "Card.h"
+#include <ctime>
 using namespace std;
 
 int Deck::current_figures = 0; 
@@ -42,8 +43,8 @@ void Deck::sortCard() {
 
 //由小到大排列所有的牌（提示：用 card 的小數去判斷），並且交換卡牌位置使用 swapByPointer()
 
-void Deck::Shuffle(int r) {
-    srand(r);
+void Deck::Shuffle() {
+    srand(time(NULL));
     for (int i = 0; i < 52; ++i)
     {
         int j = rand() % 52;
