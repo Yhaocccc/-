@@ -22,6 +22,8 @@ else{
 }
 
 int main() {
+    
+    
      cout << " * 二十一點卡牌遊戲 * " << endl;
   cout << " ******************** " << endl ;
    for (int i = 0; i < 52; i++) {
@@ -34,8 +36,7 @@ int main() {
         cout << "Poker card " << i << " has value: " << rank << "." << suit << endl;
     }
 
-    int pokerOnScreenCin = 49; // 用於使用ASCII碼的變數
-    string pokerOnScreen[52]; // 顯示於螢幕的撲克牌陣列
+    
 
     for (int i = 0; i < 52; i++) {
         if (i % 13 == 0) {
@@ -55,9 +56,9 @@ int main() {
             pokerOnScreenCin = 48;
         }
         else {
-            pokerOnScreen[i] = (char)pokerOnScreenCin; //其餘數字利用ASCII碼輸入
+            pokerOnScreen[i] = to_string((i % 13) + 1); // 其餘數字利用數字字符串表示
+            poker[i] = (i % 13) + 1;
         }
-        pokerOnScreenCin++;
     }// 將A~K輸入進陣列當中 共四次
 
     int poker[52]; //實際上玩家手上撲克牌的點數陣列
