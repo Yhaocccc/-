@@ -9,7 +9,7 @@ public:
     Deck(); //建構子 
     Card* createADeck() const; //建立一個有所有撲克牌的陣列，並且回傳它
     void sortCard(); //由小到大排列所有的牌，並且交換卡牌位置使用 swapByPointer()
-    void Shuffle(int); //洗牌
+    void Shuffle(); //洗牌
     void distributeForPlayer(int); //分配卡牌給玩家
     void distributeForDealer(int); //分配卡牌給電腦
     
