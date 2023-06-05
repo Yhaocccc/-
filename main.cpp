@@ -29,10 +29,7 @@ int main() {
  do {   
    cout << " * 二十一點卡牌遊戲 * " << endl;
    cout << " ******************** " << endl ;
-   for (int i = 0; i < 52; i++) {
-        cout << "Enter the value for poker card " << i << ": ";
-        cin >> poker[i];
-    }
+
     for (int i = 0; i < 52; i++) {
         int rank = static_cast<int>(poker[i]); // 取得整數部分(數字)
         int suit = static_cast<int>((poker[i] - rank) * 10); // 取得小數部分(花色)
