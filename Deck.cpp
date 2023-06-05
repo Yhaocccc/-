@@ -103,6 +103,18 @@ void Deck::showLater(Card* person ,int a) {
 //顯示手上所有的牌，int一個整數，是用來判斷總共要顯示幾張牌
 
 
+int Deck::calculateHandValue(Card* hand, int hand_count) {
+    int total = 0;
+    for(int i=0; i<hand_count; ++i) {
+        if(hand[i].getRank() == "A") {
+            total += 1;
+        }
+        else {
+            total += hand[i].getCard();
+        }
+    }
+    return total;
+}
 void Deck::finalCompare() {
  
     // 計算玩家和莊家手中牌的總值
@@ -158,18 +170,7 @@ void Deck::finalCompare() {
     }
 }
 
-int Deck::calculateHandValue(Card* hand, int hand_count) {
-    int total = 0;
-    for(int i=0; i<hand_count; ++i) {
-        if(hand[i].getRank() == "A") {
-            total += 1;
-        }
-        else {
-            total += hand[i].getCard();
-        }
-    }
-    return total;
-}
+
 
 
     
