@@ -12,7 +12,6 @@ public:
     double getCard() const; //回傳 card
     string getSuit() const; //回傳花色
     string getRank() const; //回傳大小
-    string getSymbol() const; //回傳卡牌的符號
     void print(); //使用 getSuit() 及 getRank() 印出資料
 
 private:
