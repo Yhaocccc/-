@@ -125,7 +125,7 @@ void Deck::finalCompare() {
     string answer;
     cin >> answer;
    if (answer == "Yes" || answer == "yes"){
-    distributeForPlayer(paraPlayer);// 分發一張牌給玩家
+    distributeForPlayer(1);// 分發一張牌給玩家
    }
    else if (answer == "No" || answer == "no"){
        break;// 跳出迴圈，結束加牌
