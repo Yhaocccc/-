@@ -1,16 +1,22 @@
 #include <iostream>
+#include <ctime>
 #include "Deck.h"
 #include "Card.h"
-#include <ctime>
 using namespace std;
 
 int Deck::current_figures = 0; 
 //紀錄當前發到第幾張牌
 
 Deck::Deck() {
-    player = player_HandCards;
-    dealer = dealer_HandCards;
+    player = new Card[5];
+    dealer = new Card[5];
     poker = createADeck();
+}
+
+Deck::Deck(Card* p, Card* d, Card* po) {
+    player = p;
+    dealer = d;
+    poker = po;
 }
 // 建構子
 
@@ -34,17 +40,18 @@ void Deck::sortCard() {
         for (int j = i + 1; j < 52; j++) {
             if (poker[j].getCard() < poker[min].getCard())
                 min = j;
-        }
-        if (min != i) {
-            swapByPointer(&poker[i], &poker[min]);
+            for (int m = 0; m < min; m++) {
+                if (poker[m].getCard() > poker[min].getCard()) {
+                    swapByPointer(&poker[m], &poker[min]);
+                }
+            }
         }
     }
 }
-
 //由小到大排列所有的牌（提示：用 card 的小數去判斷），並且交換卡牌位置使用 swapByPointer()
 
 void Deck::Shuffle() {
-    srand(time(NULL));
+    srand(time(0));
     for (int i = 0; i < 52; ++i)
     {
         int j = rand() % 52;
@@ -53,21 +60,17 @@ void Deck::Shuffle() {
 }
 //洗牌
 
-void Deck::distributeForPlayer(int paraPlayer) {
+void Deck::distributeForPlayer(Card* player, int paraPlayer) {
     player[paraPlayer] = poker[current_figures];
     current_figures++;
-    player_hand_count++;
-     // 每次分發牌給玩家，就增加玩家的手牌數量
 }
 //分配卡牌給玩家
 
-void Deck::distributeForDealer(int paraDealer) {
-    dealer[paraDealer] = poker[current_figures];
+void Deck::distributeForDealer(Card* player, int paraDealer) {
+    player[paraDealer] = poker[current_figures];
     current_figures++;
-    dealer_hand_count++;
-    // 每次分發牌給莊家，就增加莊家的手牌數量
 }
-//分配卡牌給電腦
+//分配卡牌給莊家
 
 /*
 void Deck::printCard(int parameter) {
@@ -91,91 +94,68 @@ Card* Deck::getDealer() const {
 void Deck::showOriginal(Card* person) {
     for (int i = 0; i < 2; i++) {
         person[i].print();
+        cout << " " ;
     }
+    cout << endl;
 }
 //會傳入一個 Card* 的參數，印出手上的兩張牌
 
 void Deck::showLater(Card* person ,int a) {
     for (int i = 0; i < a; i++) {
         person[i].print();
+        cout << " ";
     }
+    cout << endl;
 }
 //顯示手上所有的牌，int一個整數，是用來判斷總共要顯示幾張牌
 
-
-int Deck::calculateHandValue(Card* hand, int hand_count) {
+int Deck::calculatePoker(Card* player, int i, int choice) {
+    string index[5];
     int total = 0;
-    for(int i=0; i<hand_count; ++i) {
-        if(hand[i].getRank() == "A") {
+    for (int j = 0; j < i; j++) {
+        index[j] = player[j].getRank();
+
+        if (choice == 1 && index[j] == "A")
+            total += 11;
+        else if (choice == 0 && index[j] == "A")
             total += 1;
-        }
         else {
-            total += hand[i].getCard();
+            if (index[j] == "2")
+                total += 2;
+            else if (index[j] == "3")
+                total += 3;
+            else if (index[j] == "4")
+                total += 4;
+            else if (index[j] == "5")
+                total += 5;
+            else if (index[j] == "6")
+                total += 6;
+            else if (index[j] == "7")
+                total += 7;
+            else if (index[j] == "8")
+                total += 8;
+            else if (index[j] == "9")
+                total += 9;
+            else if (index[j] == "10" || index[j] == "J" || index[j] == "Q" || index[j] == "K")
+                total += 10;
         }
     }
-    return total;
+         return total;
 }
-void Deck::finalCompare() {
- 
-    // 計算玩家和莊家手中牌的總值
-    int playerValue = calculateHandValue(player,player_hand_count); // 玩家手牌數量
-    int dealerValue = calculateHandValue(dealer,dealer_hand_count);//莊家手牌數量
-   while (playerValue > 5 && playerValue < 21){//點數介於5到21，給玩家選擇是否加牌
-    cout<<"是否要加牌(YES or NO)"<<endl;
-    string answer;
-    cin >> answer;
-   if (answer == "Yes" || answer == "yes"){
-    distributeForPlayer(1);// 分發一張牌給玩家
-   }
-   else if (answer == "No" || answer == "no"){
-       break;// 跳出迴圈，結束加牌
-   }
-   else{
-    cout << "請輸入YES或NO" << endl;
-   }
-   cout << "玩家的點數總合為: " << playerValue << endl;
-    cout << "莊家的點數總合為: " << dealerValue << endl;
-  }
+//計算加總
 
-  bool gameFinished = false; // 添加一個標誌變量用於控制遊戲结束
-  while (!gameFinished) {
-    // 如果玩家手中牌的總值超過21，表示玩家爆牌，莊家贏
-    if (playerValue > 21) {
-        cout << "玩家爆牌，莊家贏！" << endl;
-        gameFinished = true; //結束遊戲循環
-    } 
-    // 如果莊家手中牌的總值超過21，表示莊家爆牌，玩家贏
-    else if (dealerValue > 21) {
-        cout << "莊家爆牌，玩家贏！" << endl;
-        gameFinished = true; 
-    } 
-    // 如果玩家手中牌的總值大於莊家，玩家贏
-    else if (playerValue > dealerValue) {
-        cout << "玩家贏！" << endl;
-        gameFinished = true; 
-    } 
-    // 如果莊家手中牌的總值大於玩家，莊家贏
-    else if (dealerValue > playerValue) {
-        cout << "莊家贏！" << endl;
-        gameFinished = true; 
-    } 
-    // 如果玩家和莊家手中牌的總值相等，表示平手
-    else {
-        cout << "平手！" << endl;
-        gameFinished = true; 
+int Deck::checkHaveA(Card* player, int size) {
+    int index = 0;
+    for (int i = 0; i < size; i++) {
+        if (player[i].getRank() == "A") {
+            index = 1;
+            break;
+        }
     }
-    if (player_hand_count >= 5) {
-            cout << "恭喜你過五關！" << endl;
-            gameFinished = true;
-    }
+
+    return index;
 }
-
-
-
-
-    
-}
-//最後用來比較莊家跟玩家的手牌大小
+//確認是否有A
 
 void Deck::swapByReference(Card& c1, Card& c2) {
     Card tempCard = c2;
@@ -190,20 +170,3 @@ void Deck::swapByPointer(Card* c1, Card* c2) {
     *c1 = tempCard;
 }
 //用指標的方式將參數兩個物件做交換
-
-
-
-
-/*
-for (int i = 0; i < 3; i++) {
-        if (player[i].getSymbol() > dealer[i].getSymbol())
-            cout << "Game" << i << ":" << endl << "player1 win" << endl;
-        else if (player[i].getSymbol() < dealer[i].getSymbol())
-            cout << "Game" << i << ":" << endl << "player2 win" << endl;
-        else if (player[i].getSymbol() == dealer[i].getSymbol())
-            if (player[i].getSuit() > dealer[i].getSuit())
-                cout << "Game" << i << ":" << endl << "player1 win" << endl;
-            else if (player[i].getSuit() < dealer[i].getSuit())
-                cout << "Game" << i << ":" << endl << "player2 win" << endl;
-    }
-*/
