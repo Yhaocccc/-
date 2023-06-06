@@ -3,7 +3,7 @@
 using namespace std;
 
 Card::Card() {
-	card = 0;
+	card = 0.0;
 	suit = 0;
 	rank = 0;
 }
@@ -38,7 +38,3 @@ void Card::print() {
 	cout << getSuit() << " " << getRank();
 }
 //使用 getSuit() 及 getRank() 印出資料
-
-string Card::getSymbol() const {
-	return Rank[rank-1];
-}
