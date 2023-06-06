@@ -72,13 +72,6 @@ void Deck::distributeForDealer(Card* player, int paraDealer) {
 }
 //分配卡牌給莊家
 
-/*
-void Deck::printCard(int parameter) {
-    poker[parameter].print();
-}
-//會傳入一個 int 的參數，使用 cards[int] 去呼叫 class Card的print()做輸出
-*/
-
 Card* Deck::getPlayer() const {
 
     return player;
