@@ -1,106 +1,101 @@
 #include <iostream>
 #include <string>
-#include"Card.h"
-#include"Deck.h"
+#include "Card.h"
+#include "Deck.h"
 using namespace std;
-    bool playAgain() {
-        bool playAgain = false;
-        string choice;
-         while(true){
-            cout << "是否重新開始遊戲(YES or NO)";
-            cin >> choice;
-    
-            if ( choice== "Yes"|| choice == "yes"||choice == "YES"){
-                  return true;
-            }
-            else if ( choice== "No"||choice == "NO"|| choice == "no"){
-                 return false;
-            }
-            else{
-                cout<<"請輸入YES或NO"<<endl;
-            }
-        } 
-   }
 
 int main() {
-    string  pokerOnScreen[52];
-     int poker[52]; //實際上玩家手上撲克牌的點數陣列
-        string pokerOnScreen[52];
- do {   
-   cout << " * 二十一點卡牌遊戲 * " << endl;
-   cout << " ******************** " << endl ;
+	Deck poker; //建立一個Deck裡面要有52張牌
+	Card* player = new Card[5]; //建立玩家的卡組
+	Card* dealer = new Card[5]; //建立莊家的卡組
 
-    for (int i = 0; i < 52; i++) {
-        int rank = static_cast<int>(poker[i]); // 取得整數部分(數字)
-        int suit = static_cast<int>((poker[i] - rank) * 10); // 取得小數部分(花色)
-        cout << "Poker card " << i << " has value: " << rank << "." << suit << endl;
-    }
+	poker.sortCard(); //52 張牌做排序（由小排到大）
+	poker.Shuffle(); //洗牌
 
-    
+	int i = 0, j = 0;//i代表玩家的張數 j代表莊家的張數
 
-    for (int i = 0; i < 52; i++) {
-        if (i % 13 == 0) {
-            pokerOnScreen[i] = "A"; //設定1個數字為A
-        }
-        else if (i % 13 == 9) {
-            pokerOnScreen[i] = "10"; //設定10個數字為10
-        }
-        else if (i % 13 == 10) {
-            pokerOnScreen[i] = "J"; //設定11個數字為J
-        }
-        else if (i % 13 == 11) {
-            pokerOnScreen[i] = "Q"; //設定12個數字為Q
-        }
-        else if (i % 13 == 12) {
-            pokerOnScreen[i] = "K"; //設定13個數字為K
-            pokerOnScreenCin = 48;
-        }
-        else {
-            pokerOnScreen[i] = to_string((i % 13) + 1); // 其餘數字利用數字字符串表示
-            poker[i] = (i % 13) + 1;
-        }
-    }// 將A~K輸入進陣列當中 共四次
+	for (i = 0; i < 2; i++, j++) {
+		poker.distributeForPlayer(player, i);
+		poker.distributeForDealer(dealer, j);
+	}// 輪流發牌，共發兩張
 
-   
+	int choice = 0; //決定所有的A 是要變成11 還是1 初始為0
 
+	cout << "玩家手中的牌："; poker.showOriginal(player);//顯示玩家手中的牌
 
-    for (int i = 0; i < 52; i++) {
-        if (i % 13 == 9 || i % 13 == 10 || i % 13 == 11 || i % 13 == 12) {
-            poker[i] = 10; //10, J, Q, K為點數10
-        }
-        else {
-            poker[i] = (i + 1) % 13; //剩餘數字照常輸入
-        }
+	if (poker.checkHaveA(player, i) == 1) {
+		cout << "請問您要將手上的A 轉變為11 還是1呢？ 轉變為11 請輸入1 反之輸入0" << endl;
+		cin >> choice;
+	}//確認初始值的A 是要變成11 還是1
 
-    } //輸入點數於陣列中
-/*
-    for (int i = 0; i < 52; i++) {
-        cout << poker[i] << " ";
-    }
-*/
+	cout << "以及你目前的總點數為：" << poker.calculatePoker(player, i, choice) << endl;
+	cout << "---------------輸入任意值進行下一步---------------" << endl;
+	char a;
+	cin >> a;
+	cout << "--------------------------------------------------" << endl;
 
-     Deck deck;
-     // 建立牌組
-   
-     deck.createADeck();
-     deck.Shuffle();
-     // 創建一副牌並洗牌
-  
-     deck.distributeForPlayer(2);
-     deck.distributeForDealer(2);
-     // 發兩張牌給玩家和莊家
+	cout << "請問你是否需要加牌呢？" << endl << endl; cout << "需要加牌 輸入1 不需要加牌 輸入0" << endl;
 
-    
-     cout << "玩家的牌: " << endl;
-     deck.showOriginal(deck.getPlayer());
-     cout << "莊家的牌: " << endl;
-     deck.showOriginal(deck.getDealer());
-     // 顯示玩家和莊家的初始手牌
+	int num;//是否需要加牌的變數
+	cin >> num;
 
-     deck.finalCompare();
-     //詢問玩家是否要加牌，並決定遊戲勝負
+	cout << "--------------------------------------------------" << endl;
 
-   } while (playAgain());  //詢問是否重新開始遊戲
+	while (num == 1 || num == 0) {
+		if (num == 1) {
+				poker.distributeForPlayer(player, i); i++;
+				cout << "玩家目前手中的牌：";
+				poker.showLater(player, i);
+				cout << "以及你的總點數為：" << poker.calculatePoker(player, i, choice) << endl;
+				if (i == 5) {
+					cout << "--------------------------------------------------" << endl;
+					cout << "遊戲結束 玩家獲勝！！！";
+					break;
+				}
+				if (poker.calculatePoker(player, i, choice) <= 21) {
+					if (poker.checkHaveA(player, i) == 1) {
+						cout << "請問您要將手上的A 轉變為11 還是1呢？ 轉變為11 請輸入1 反之輸入0" << endl;
+						cin >> choice;
+					}
+					cout << "請問你是否需要繼續加牌呢？" << endl;
+					cout << "--------------------------------------------------" << endl;
+					cin >> num;
+				}
+				else {
+					cout << "--------------------------------------------------" << endl;
+					cout << "遊戲結束 莊家獲勝" << endl;
+					break;
+				}
+				
+		}
 
-     return 0;
+		if(num == 0) {
+			cout << "莊家手中的牌："; poker.showOriginal(dealer);
+			while (poker.calculatePoker(dealer, j, 1) < 17) {
+				poker.distributeForDealer(dealer, j); j++;
+			}
+			poker.showLater(dealer, j);
+			cout << "莊家的總點數為：" << poker.calculatePoker(dealer, j, 1) << endl;
+
+			if (poker.calculatePoker(dealer, j, 1) > 21) {
+				cout << "--------------------------------------------------" << endl;
+				cout << "遊戲結束 玩家獲勝！！！";
+			}
+			else {
+				cout << "玩家與莊家最後的對決 準備好就輸入任意值" << endl;
+				cin >> a;
+				cout << "--------------------------------------------------" << endl;
+				if (poker.calculatePoker(dealer, j, 1) > poker.calculatePoker(player, i, choice))
+					cout << "遊戲結束 莊家獲勝";
+				else if (poker.calculatePoker(dealer, j, 1) == poker.calculatePoker(player, i, choice))
+					cout << "遊戲結束 雙方平手";
+				else
+					cout << "遊戲結束 玩家獲勝！！！";
+			}
+			break;
+
+		}
+	}
+	
+	return 0;
 }
