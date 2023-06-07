@@ -4,7 +4,7 @@
 #include "Card.h"
 using namespace std;
 
-int Deck::current_figures = 0; 
+int Deck::current_figures = 0;
 //紀錄當前發到第幾張牌
 
 Deck::Deck() {
@@ -87,13 +87,13 @@ Card* Deck::getDealer() const {
 void Deck::showOriginal(Card* person) {
     for (int i = 0; i < 2; i++) {
         person[i].print();
-        cout << " " ;
+        cout << " ";
     }
     cout << endl;
 }
 //會傳入一個 Card* 的參數，印出手上的兩張牌
 
-void Deck::showLater(Card* person ,int a) {
+void Deck::showLater(Card* person, int a) {
     for (int i = 0; i < a; i++) {
         person[i].print();
         cout << " ";
@@ -133,7 +133,7 @@ int Deck::calculatePoker(Card* player, int i, int choice) {
                 total += 10;
         }
     }
-         return total;
+    return total;
 }
 //計算加總
 
