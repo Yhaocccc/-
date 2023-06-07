@@ -49,21 +49,21 @@ int main() {
 				cout << "以及你的總點數為：" << poker.calculatePoker(player, i, choice) << endl;
 				if (i == 5) {
 					cout << "--------------------------------------------------" << endl;
-					cout << "遊戲結束 玩家獲勝！！！";
+					cout << "遊戲結束 過五關！！！";
 					break;
-				}
+				}//過五關的判斷
 				if (poker.calculatePoker(player, i, choice) <= 21) {
 					if (poker.checkHaveA(player, i) == 1) {
 						cout << "請問您要將手上的A 轉變為11 還是1呢？ 轉變為11 請輸入1 反之輸入0" << endl;
 						cin >> choice;
-					}
+					}//如果牌堆裡面有A
 					cout << "請問你是否需要繼續加牌呢？" << endl;
 					cout << "--------------------------------------------------" << endl;
 					cin >> num;
-				}
+				}//判斷是否大於21點
 				else {
 					cout << "--------------------------------------------------" << endl;
-					cout << "遊戲結束 莊家獲勝" << endl;
+					cout << "遊戲結束 太可惜啦！莊家獲勝 不要哭" << endl;
 					break;
 				}
 				
@@ -73,22 +73,23 @@ int main() {
 			cout << "莊家手中的牌："; poker.showOriginal(dealer);
 			while (poker.calculatePoker(dealer, j, 1) < 17) {
 				poker.distributeForDealer(dealer, j); j++;
-			}
+			}//判斷莊家是否小於17點
+
 			poker.showLater(dealer, j);
 			cout << "莊家的總點數為：" << poker.calculatePoker(dealer, j, 1) << endl;
 
 			if (poker.calculatePoker(dealer, j, 1) > 21) {
 				cout << "--------------------------------------------------" << endl;
 				cout << "遊戲結束 玩家獲勝！！！";
-			}
+			}//莊家是否大於21點
 			else {
 				cout << "玩家與莊家最後的對決 準備好就輸入任意值" << endl;
 				cin >> a;
 				cout << "--------------------------------------------------" << endl;
 				if (poker.calculatePoker(dealer, j, 1) > poker.calculatePoker(player, i, choice))
-					cout << "遊戲結束 莊家獲勝";
+					cout << "遊戲結束 太可惜啦！莊家獲勝 不要哭";
 				else if (poker.calculatePoker(dealer, j, 1) == poker.calculatePoker(player, i, choice))
-					cout << "遊戲結束 雙方平手";
+					cout << "遊戲結束 雙方平手 下次加油";
 				else
 					cout << "遊戲結束 玩家獲勝！！！";
 			}
